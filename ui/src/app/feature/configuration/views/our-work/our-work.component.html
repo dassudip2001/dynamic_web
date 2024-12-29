@@ -63,7 +63,8 @@
                     id="dropzone">
                     <input type="file"
                       class="absolute inset-0 w-full h-full opacity-0 z-50"
-                      id="imageUpload" accept=".png" />
+                      id="imageUpload" accept=".png"
+                      (change)="onFileSelected($event)" />
                     <div class="text-center">
                       <img class="mx-auto h-12 w-12"
                         src="https://www.svgrepo.com/show/357902/image-upload.svg"
@@ -76,7 +77,8 @@
                           <span>to upload</span>
                           <input id="file-upload" name="file-upload"
                             type="file"
-                            class="sr-only" accept=".png">
+                            class="sr-only" accept=".png"
+                            (change)="onFileSelected($event)">
                         </label>
                       </h3>
                       <p class="mt-1 text-xs text-gray-500">
@@ -88,6 +90,10 @@
                 <div
                   class="flex items-center justify-center gap-2 px-4 mt-3"
                   id="imagePreviewContainer">
+                  @if(previewUrl.uploadResult.url){
+                  <img src="{{previewUrl.uploadResult.url}}" alt srcset
+                    class="w-20 h-20">
+                  }
                 </div>
                 <input type="hidden" id="imageUrls" name="imageUrls">
               </div>
