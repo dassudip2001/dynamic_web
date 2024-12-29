@@ -10,7 +10,7 @@ export type ServicesT = {
   id?: number;
   name: string;
   description: string;
-  image_url: string;
+  image_url?: string;
   createdAt?: Date;
   updatedAt?: Date;
 };

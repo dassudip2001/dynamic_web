@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import heroRouter from './src/routes/heroRouter';
 import ourServiceRoute from './src/routes/ourServiceRoute';
 import workRoute from './src/routes/ourWorkRoute';
+import fileUploadRouter from './src/routes/fileUploadRouter';
 dotenv.config();
 
 const app = express();
@@ -19,7 +20,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/api/v1', heroRouter);
 app.use('/api/v1', ourServiceRoute);
 app.use('/api/v1', workRoute);
-
+app.use('/api/v1', fileUploadRouter);
 app.listen(PORT, () => {
     console.log('Server is running on port 3000');
 });
