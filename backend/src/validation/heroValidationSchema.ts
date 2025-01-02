@@ -2,12 +2,14 @@ import { z } from 'zod';
 
 export const createHeroSchema = z.object({
     name: z.string({ message: 'Name is required' }).min(3),
-    description: z.string().optional()
+    description: z.string().optional(),
+    image_url: z.string().optional()
 });
 
 export const updateHeroSchema = z.object({
     name: z.string().min(3).optional(),
-    description: z.string().optional()
+    description: z.string().optional(),
+    image_url: z.string().optional()
 });
 
 export type CreateHeroInput = z.infer<typeof createHeroSchema>;

@@ -1,15 +1,20 @@
-import zod from 'zod';
+import { z } from 'zod';
 
-export const createServiceSchema = zod.object({
-    name: zod.string({ message: 'Name is required' }).min(3),
-    subtitle: zod.string().optional(),
-    description: zod.string().optional(),
-    image_url: zod.array(zod.string()).optional()
+export const createOurWorkSchema = z.object({
+    title: z.string({ message: 'title is required' }).min(3),
+    subtitle: z.string().optional(),
+    description: z.string().optional(),
+    image_url: z.array(z.string()).optional(),
+    heroId: z.number({ message: 'Hero ID is required' }) // Make heroId required
 });
 
-export const updateServiceSchema = zod.object({
-    name: zod.string().min(3).optional(),
-    description: zod.string().optional(),
-    subtitle: zod.string().optional(),
-    image_url: zod.array(zod.string()).optional()
+export const updateOurWorkSchema = z.object({
+    title: z.string().min(3).optional(),
+    description: z.string().optional(),
+    subtitle: z.string().optional(),
+    image_url: z.array(z.string()).optional(),
+    heroId: z.number({ message: 'Hero ID is required' }) // Make heroId required
 });
+
+export type CreateOurWorkInput = z.infer<typeof createOurWorkSchema>;
+export type UpdateOurWorkInput = z.infer<typeof updateOurWorkSchema>;
